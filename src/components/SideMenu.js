@@ -1,27 +1,22 @@
 import React, { Component } from 'react';
 import { ListGroup,ListGroupItem,Glyphicon } from 'react-bootstrap';
 
-
-
 class SideMenu extends Component{
   
-  hideDashboard(e){
+  dashboard(){
     const {isOn}=this.state
     this.setState({isOn : !isOn})
-    // e.target.style.backgroundColor="yellow"
-    // var sidebar=document.getElementsByClassName('.SideBar');
-    
-    console.log(this.state.isOn)
-    if(this.state.isOn){
-      
-    }
-     
-  }//end of hideDashboard
+  }//end of dashboard
+  
+  triggerClick(){
+    this.props.triggerSideMenu()
+    this.dashboard()
+  }//end of triggerClick
   
   
   constructor(props){
     super(props)
-    this.state={isOn:true,
+    this.state={isOn:false,
       links:[
         {text:" Dashboard",
           link:"#",
@@ -47,7 +42,8 @@ class SideMenu extends Component{
           
       ]
     }//end of state object
-    this.hideDashboard = this.hideDashboard.bind(this);
+    this.dashboard = this.dashboard.bind(this);
+    this.triggerClick = this.triggerClick.bind(this);
   }//end of constructor
   
   render(){
@@ -55,17 +51,22 @@ class SideMenu extends Component{
     for(var i=0; i<this.state.links.length; i++){
       var item=this.state.links[i]
       if(i===0){
-        links[i]=<ListGroupItem key={i} href={item.link} className="SideMenuTitle"
-          onClick={this.hideDashboard}>
-          <Glyphicon glyph={item.icon} />{item.text}</ListGroupItem>
+        links[i]=<ListGroupItem key={i} href={item.link} 
+        className={this.state.isOn? "SideMenuTitleOff MenuItemOff":"SideMenuTitle MenuItem"}
+          onClick={this.triggerClick}>
+          <Glyphicon glyph={item.icon} 
+          className={this.state.isOn? "sideGlyphIconOff":"sideGlyphIcon"}/>{this.state.isOn? "":item.text}
+          </ListGroupItem>
         continue
       }//end of title Dashboard
-      links[i]=<ListGroupItem key={i} href={item.link}>
-        <Glyphicon glyph={item.icon} />{item.text}</ListGroupItem>
+      links[i]=<ListGroupItem key={i} href={item.link}
+      className={this.state.isOn? "MenuItemOff":"MenuItem"}> 
+        <Glyphicon glyph={item.icon} className={this.state.isOn? "sideGlyphIconOff":"sideGlyphIcon"}/>{this.state.isOn? "":item.text}
+        </ListGroupItem>
     }//end of forloop
     
     return(
-      <ListGroup className="SideMenu">
+      <ListGroup className={this.state.isOn? "SideMenuOff":"SideMenu"}>
         {links}
       </ListGroup>
     )//end of return

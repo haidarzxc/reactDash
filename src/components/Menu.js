@@ -3,6 +3,11 @@ import { Navbar,NavItem,Nav,NavDropdown,MenuItem } from 'react-bootstrap';
 import logo from '../logo.svg';
 
 export default class Menu extends Component{
+  constructor(props){
+    super(props)
+    this.state={isOn:false}
+  }//end of constructor
+  
   render(){
     return (
       
