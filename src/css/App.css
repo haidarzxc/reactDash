@@ -1,13 +1,13 @@
-.row,#root,body,html{
+#root,body,html{
   height: 100%;
-}
-
-.row{
-  margin-right: 0;
 }
 
 .navbar-brand{
   display:inline-flex;
+}
+
+.row{
+  margin: 0;
 }
 
 .logo{
@@ -25,7 +25,7 @@
 
 @keyframes sideOn {
   from {
-    margin-left: -12%; 
+    margin-left: -140px; 
   }
 
   to {
@@ -39,47 +39,57 @@
   }
 
   to {
-    margin-left: -12%;
+    margin-left: -140px;
   }
 }
 
 @keyframes bodyOff {
   from {
-    width: 83.33333333%; 
+    /* width: 87.0%;  */
+    /*  16.66666667*/
+    padding-left: 200px;
+    
   }
 
   to {
-    width: 95.33333333%;
+    /* width: 96.1%; */
+    padding-left: 60px;
   }
 }
 
 @keyframes bodyOn {
   from {
-    width: 95.33333333%; 
+    /* width: 96.1%; */
+    padding-left: 60px;
   }
 
   to {
-    width: 83.33333333%;
+    /* width: 87.0%; */
+    padding-left: 200px;
   }
 }
 
 @keyframes glyphOff {
   from {
-    margin-left: 0px; 
+    margin-right: 330px;
+    opacity: 0; 
+    font-size: 17.5pt;
   }
 
   to {
-    margin-left: 372px;
+    margin-left: 330px;
+    opacity: 1;
+    font-size: 18.5pt;
   }
 }
 
 @keyframes glyphOn {
   from {
-    margin-left: 372px; 
+    
   }
 
   to {
-    margin-left: 0px;
+    
   }
 }
 
@@ -103,23 +113,50 @@
   }
 }
 
+@keyframes navOn {
+  from {
+    margin-left: 60px; 
+  }
+
+  to {
+    margin-left: 200px;
+  }
+}
+
+@keyframes navOff {
+  from {
+    margin-left: 200px; 
+  }
+
+  to {
+    margin-left: 60px;
+  }
+}
+
 .SideBar{
+  z-index: 1;
+  padding-left: 0;
   padding-right: 0;
   height: 100%;
+  width: 200px;
   background-color: #2a3f54;
   animation-name: sideOn;
   animation-duration: 0.5s;
-  animation-fill-mode: forwards
-  
+  animation-fill-mode: forwards;
+  position:fixed;
 }
 
 .SideBarOFF{
+  z-index: 1;
+  padding-left: 0;
   padding-right: 0;
   height: 100%;
+  width: 200px;
   background-color: #2a3f54;
   animation-name: sideOff;
   animation-duration: 0.5s;
   animation-fill-mode: forwards;
+  position:fixed;
 }
 
 .Body{
@@ -129,6 +166,9 @@
   animation-duration: 0.5s;
   animation-fill-mode: forwards;
   
+  /* background-color: #94ccad;
+  height: 100%; */
+  width: 100%;
 }
 
 .BodyOff{
@@ -137,6 +177,10 @@
   animation-name: bodyOff;
   animation-duration: 0.5s;
   animation-fill-mode: forwards;
+  
+  /* background-color: #94ccad;
+  height: 100%; */
+  width: 100%;
 }
 
 .SideMenu > .list-group-item, 
@@ -165,13 +209,13 @@
 
 .sideGlyphIconOff{
   animation-name: glyphOff;
-  animation-duration: 0.5s;
+  animation-duration: 0.7s;
   animation-fill-mode: forwards;
 }
 
 .sideGlyphIcon{
   animation-name: glyphOn;
-  animation-duration: 0.5s;
+  animation-duration: 0.7s;
   animation-fill-mode: forwards;
 }
 
@@ -190,5 +234,30 @@
   padding-left: 2%;
   padding-right: 2%;
   border-radius: 0;
+  animation-name: navOn;
+  animation-duration: .5s;
+  animation-fill-mode: forwards;
+  
+}
+
+.NavbarOff{
+  padding-left: 2%;
+  padding-right: 2%;
+  border-radius: 0;
+  animation-name: navOff;
+  animation-duration: .5s;
+  animation-fill-mode: forwards;
+}
+
+.GraphContainerPanelBody{
+  padding: 0;
+}
+
+.GraphRowFirst{
+  margin-top: 70px;
+}
+
+.ProgressBar{
+  padding: 15px;
 }
 
